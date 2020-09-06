@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$white: #f3f3f3;
+$red: #ca1d1d;
+$grey: #333;
+
+$smooth-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
+
+html {
+  font-size: 12px;
+  position: relative;
+}
+body {
+  background-color: $grey;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.App {
+  padding: 10rem 0 0 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  font-weight: 800;
+  color: $grey;
+  width: 10rem;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  .btn {
+    background-color: $red;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    border-radius: 50%;
+    transition: transform 0.1s ease;
+    user-select: none;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.card {
+  height: 30rem;
+  font-family: "Bree Serif", serif;
+  color: $white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &__year {
+    background-color: rgba($red, 0.75);
+    width: 40%;
+    border-radius: 0 0 1rem 1rem;
+    padding: 0 0.5rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__event {
+    width: 90%;
+    background-color: rgba($grey, 0.9);
+    margin: 1rem auto;
+    padding: 1rem;
+    list-style: none;
+    border-radius: 0.25rem;
+  }
+}
+
+.cards-slider-wrapper {
+  display: flex;
+  position: absolute;
+  transition: transform 0.3s cubic-bezier(0.23, 0.5, 0.34, 0.92);
+  .card {
+    flex: 1;
+    min-width: 25rem;
+    opacity: 0.3;
+    transform: scale(0.9);
+    transition: opacity 0.3s linear,
+      transform 0.3s cubic-bezier(0.23, 0.5, 0.34, 0.92), filter 0.1s ease;
+    border-radius: 1rem;
+    box-shadow: $smooth-shadow;
+    filter: blur(0.2rem);
+  }
+}
+
+$i: 0;
+@for $i from 0 through 10 {
+  .cards-slider.active-slide-#{$i} #card-#{$i} {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.cards-slider {
+  position: relative;
+  max-width: 25rem;
+  margin: 0 auto;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 30rem;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+/*   MEDIA QUERIES   */
+// S Devices
+@media (min-width: 576px) {
+  html {
+    font-size: 13px;
+  }
+}
+// M Devices
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+// L Devices
+@media (min-width: 992px) {
+  html {
+    font-size: 15px;
+  }
+}
+// XL Devices
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
