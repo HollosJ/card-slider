@@ -69,6 +69,8 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  user-select: none;
+
   &__year {
     background-color: rgba($red, 0.75);
     width: 40%;
@@ -110,6 +112,7 @@ $i: 0;
     opacity: 1;
     transform: scale(1);
     filter: blur(0);
+    user-select: auto;
   }
 }
 
